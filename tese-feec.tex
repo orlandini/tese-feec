@@ -4,6 +4,21 @@
 \documentclass[Ingles]{feec-tese-v1}
 %\documentclass[Ingles,Final]{feec-tese-v1}
 
+% BIBLIOGRAFIA
+\usepackage[backend=biber, isbn=false, doi=false,backref=true,style=abnt,language=english,extrayear]{biblatex}
+\addbibresource{references.bib}
+% em ingles queremos mostrar References ao invés de Bibliography
+\DefineBibliographyStrings{english}{%
+  bibliography = {References},
+}
+\usepackage{xpatch}%et al in italics
+
+\xpatchbibmacro{name:andothers}{%
+  \bibstring{andothers}%
+}{%
+  \bibstring[\emph]{andothers}%
+}{}{}
+
 \usepackage[latin1,utf8]{inputenc}
 
 % Para acrescentar comentários ao PDF descomente:
@@ -219,8 +234,7 @@ anim id est laborum.
 
 
 % As referências:
-\bibliographystyle{plain}
-\bibliography{references}
+\printbibliography
 
 
 % Os anexos, se houver, vêm depois das referências:

@@ -418,7 +418,3 @@
 \fancypagestyle{plain}{\fancyhf{}\fancyhead[R]{\thepage}}
 \setstretch{1.1}
 }
-
-
-\let\@oldbiblio\thebibliography
-\renewcommand{\thebibliography}[1]{\newpage\addcontentsline{toc}{chapter}{\bibname}\@oldbiblio{#1}}
