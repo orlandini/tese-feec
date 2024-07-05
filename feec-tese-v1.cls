@@ -6,6 +6,12 @@
 \ProvidesClass{feec-tese-v1}[]
 \typeout{feec-tese-v1}
 
+\newif\ifshowfrontmatter
+\showfrontmattertrue
+\DeclareOption{NFM}{
+  \showfrontmatterfalse
+}
+
 \def\thesislanguage#1{\gdef\@thesislanguage{#1}}
 \DeclareOption{Ingles}{
   \thesislanguage{0}

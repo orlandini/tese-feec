@@ -1,7 +1,9 @@
 % Escolha: Portugues ou Ingles ou Espanhol.
+% Para imprimir apenas o texto, sem as páginas iniciais, use a opção NFM
 % Para a versão final do texto, após a defesa, acrescente Final:
 
 \documentclass[Ingles]{feec-tese-v1}
+%\documentclass[Ingles,NFM]{feec-tese-v1}
 %\documentclass[Ingles,Final]{feec-tese-v1}
 
 % BIBLIOGRAFIA
@@ -74,7 +76,7 @@
 % Para incluir a ficha catalográfica em PDF na versão final, descomente e ajuste:
 %\fichacatalografica{arquivo.pdf}
 
-
+\ifshowfrontmatter
 % Este comando deve ficar aqui:
 \paginasiniciais
 
@@ -143,7 +145,8 @@ The abstract must have at most 500 words and must fit in a single page.
 
 % E esta linha deve ficar bem aqui:
 \fimdaspaginasiniciais
-
+\fi
+\resetlang
 
 % O corpo da dissertação ou tese começa aqui:
 \chapter{Introdução}
