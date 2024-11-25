@@ -40,6 +40,7 @@
 \RequirePackage{graphicx}
 \PassOptionsToPackage{table}{xcolor}
 \RequirePackage{pdfpages}
+\RequirePackage[titletoc]{appendix}
 \RequirePackage{xspace}
 
 \RequirePackage{setspace}
