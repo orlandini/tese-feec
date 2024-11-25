@@ -15,22 +15,21 @@
 \def\thesislanguage#1{\gdef\@thesislanguage{#1}}
 \DeclareOption{Ingles}{
   \thesislanguage{0}
-  \typeout{ic-tese: ingles.}
+  \typeout{feec-tese: ingles.}
 }
 \DeclareOption{Espanhol}{
   \thesislanguage{1}
-  \typeout{ic-tese: espanhol.}
+  \typeout{feec-tese: espanhol.}
 }
 \DeclareOption{Portugues}{
   \thesislanguage{2}
-  \typeout{ic-tese: portugues.}
+  \typeout{feec-tese: portugues.}
 }
 \newif\iffinalversion
 \DeclareOption{Final}{
   \finalversiontrue
-  \typeout{ic-tese: versao final.}
+  \typeout{feec-tese: versao final.}
 }
-
 
 \ProcessOptions\relax
 
@@ -49,13 +48,20 @@
 
 \RequirePackage{fancyhdr}
 
-\newcommand{\@FEEC}{Faculdade de Engenharia El\'etrica e Computa\c{c}\~ao}
+\newcommand{\@FEEC}{Faculdade de Engenharia El\'etrica e de Computa\c{c}\~ao}
 \newcommand{\@UNICAMP}{Universidade Estadual de Campinas}
 
 % User fields:
 \let\@autor\relax
 \def\autor#1{\gdef\@autor{#1}}
 \author{\@autor}
+
+\let\@areapt\relax
+\def\areapt#1{\gdef\@areapt{#1}}
+\let\@areaes\relax
+\def\areaes#1{\gdef\@areaes{#1}}
+\let\@areaen\relax
+\def\areaen#1{\gdef\@areaen{#1}}
 
 \let\@autora\relax
 \def\autora#1{\gdef\@autora{#1}}
@@ -173,15 +179,16 @@
   \noindent
   \begin{center}
   \begin{tabular}{ccc}
-    \raisebox{-.5\height}{\includegraphics[width=2.2cm]{logo-unicamp.eps}}
+    \raisebox{-.5\height}{\includegraphics[width=1.8cm]{logo-unicamp.eps}}
     &
-    \begin{minipage}{.6\textwidth}
+    \begin{minipage}{.75\textwidth}
       \centering
-      \textbf{\@UNICAMP} \\
-      \textbf{\@FEEC} \\
+      \large
+      \textbf{\textsc{\@UNICAMP}} \\
+      \textsc{\@FEEC} \\
     \end{minipage}
     &
-    \raisebox{-.5\height}{\includegraphics[width=2.2cm]{logo-feec.eps}}
+    % \raisebox{-.5\height}{\includegraphics[width=2.2cm]{logo-feec.eps}}
   \end{tabular}
   \end{center}
 }
@@ -192,16 +199,16 @@
   \vskip 35mm
   \begin{center}
     \Large
-    {\bf \if\@autora\relax\@autor\else\@autora\fi}
+    { \if\@autora\relax\@autor\else\@autora\fi}
     \vskip 25mm
     \ifcase\@thesislanguage
-      {\bf\@title}
+      {\Large\bf\@title}
       \vskip 25mm
     \or
-      {\bf\@title}
+      {\Large\bf\@title}
       \vskip 25mm
     \fi
-    {\bf \@titulo}
+    {\Large\bf \@titulo}
     \vfill
     \large
     CAMPINAS\\
@@ -215,6 +222,7 @@
   \vfill
   \begin{center}
     \if\@autora\relax\@autor\else\@autora\fi
+    \Large
     \vfill
     \ifcase\@thesislanguage
       \@title
@@ -232,7 +240,7 @@
     \supresshyphen
     \@monopt\xspace apresentada \`a Faculdade de Engenharia El\'etrica e Computa\c{c}\~ao da
     Universidade Estadual de Campinas como parte dos requisitos para a
-    obten\c{c}\~ao do t\'{\i}tulo de \@degnamept\xspace em Engenharia El\'etrica\ifx\@cotutela\relax\else\xspace no \^ambito do acordo
+    obten\c{c}\~ao do t\'{\i}tulo de \@degnamept\xspace em Engenharia El\'etrica, na área de \@areapt\ifx\@cotutela\relax\else\xspace no \^ambito do acordo
     de Cotutela firmado entre a Unicamp e a \@cotutela\fi.
   \end{minipage}
   \ifcase\@thesislanguage
@@ -241,7 +249,7 @@
       \supresshyphen
       \@monoen\xspace presented to the Faculty of Electrical and Computer Engineering of the
       University of Campinas in partial fulfillment of the requirements for
-      the degree of \@degnameen\xspace in Electrical Engineering\ifx\@cotutela\relax\else\xspace under the double-diploma
+      the degree of \@degnameen\xspace in Electrical Engineering, in the area of \@areaen\ifx\@cotutela\relax\else\xspace under the double-diploma
       agreement between Unicamp and \@cotutela\fi.
     \end{minipage}
   \or
@@ -250,7 +258,7 @@
       \supresshyphen
       \@monoes\xspace presentada al Instituto de la Computaci\'on de la
       Universidad de Campinas para obtener el t\'{\i}tulo de
-      \@degnamees\xspace en Ingenier\'ia El\'etrica\ifx\@cotutela\relax\else\xspace en el \'ambito del
+      \@degnamees\xspace en Ingenier\'ia El\'etrica, en el área de \@areaes\ifx\@cotutela\relax\else\xspace en el \'ambito del
       acuerdo de Cotutela firmando entre la Universidad Estatal de Campinas
       y la \@cotutela\fi.
     \end{minipage}
@@ -424,3 +432,5 @@
 \fancypagestyle{plain}{\fancyhf{}\fancyhead[R]{\thepage}}
 \setstretch{1.1}
 }
+\addto{\captionsenglish}{\renewcommand{\bibname}{References}}
+\addto{\captionsenglish}{\renewcommand{\refname}{References}}
