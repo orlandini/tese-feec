@@ -56,6 +56,9 @@
 \def\autor#1{\gdef\@autor{#1}}
 \author{\@autor}
 
+\let\@numerora\relax
+\def\numerora#1{\gdef\@numerora{#1}}
+
 \let\@areapt\relax
 \def\areapt#1{\gdef\@areapt{#1}}
 \let\@areaes\relax
@@ -85,6 +88,7 @@
   \gdef\@monopt{Disserta\c{c}\~ao}
   \gdef\@monoes{Dissertac\'ion}
   \gdef\@monoen{Dissertation}
+  \gdef\@progname{Mestrado}
 }
 \gdef\doutorado{
   \if\@autora\relax
@@ -98,6 +102,7 @@
   \gdef\@monopt{Tese}
   \gdef\@monoes{Tesis}
   \gdef\@monoen{Thesis}
+  \gdef\@progname{Doutorado}
 }
 
 \let\@orientador\relax
@@ -330,51 +335,34 @@
 
 \def\approvalpage{
   \iffinalversion
-    \logos
-    \vskip 20mm
     \begin{center}
       \large
-      {\bf \if\@autora\relax\@autor\else\@autora\fi}
-      \vskip 15mm
-      \ifcase\@thesislanguage
-        {\bf\@title}
-        \vskip 8mm
-      \or
-        {\bf\@title}
-        \vskip 8mm
-      \fi
-      {\bf \@titulo}
+      {\bf Comiss\~ao Julgadora --- \@monopt\xspace de \@progname}
     \end{center}
-    \vfill
-    {\bf Banca Examinadora:}
-    \ifx\@avalA\relax
-    \else
-      \begin{itemize}
-      \item \@avalA\newline\@instavalA
-      \ifx\@avalB\relax\else \item \@avalB\newline\@instavalB\fi
-      \ifx\@avalC\relax\else \item \@avalC\newline\@instavalC\fi
-      \ifx\@avalD\relax\else \item \@avalD\newline\@instavalD\fi
-      \ifx\@avalE\relax\else \item \@avalE\newline\@instavalE\fi
-      \ifx\@avalF\relax\else \item \@avalF\newline\@instavalF\fi
-      \end{itemize}
-    \fi
-    \vfill
-    \hfill\begin{minipage}[t]{\textwidth}
-      \begin{center}
-      \supresshyphen
-      A ata da defesa, assinada pelos membros da Comiss\~ao Examinadora, consta no
-      SIGA/Sistema de Fluxo de Disserta\c{c}\~ao/Tese e na Secretaria do Programa da Unidade.
-      \end{center}
-    \end{minipage}
-    \vfill
-    \hfill\begin{minipage}[t]{\textwidth}
-      \begin{center}
-      Campinas, \@dia\xspace de
+
+    {\bf \if\@autora\relax Candidato \else Candidata \fi:} \if\@autora\relax\@autor\else\@autora\fi {\xspace\bf RA:} \@numerora
+    
+    {\bf Data da defesa: } \@dia\xspace de    
       \ifcase \@mes \or janeiro\or fevereiro\or mar\c{c}o\or abril\or maio\or
       junho\or julho\or agosto\or setembro\or outubro\or novembro\or
       dezembro\fi\xspace
-      de \@ano
-      \end{center}
+    de \@ano
+
+    {\bf Título da \@monopt: } "\ifcase\@thesislanguage \@title\or\@titulo\fi"
+    
+      \vskip 30mm
+
+      \if\@orientadora\relax \@orientador\else\@orientadora\fi\newline
+      \ifx\@avalA\relax\else \@avalA \xspace(\@instavalA)\newline\fi
+      \ifx\@avalB\relax\else \@avalB \xspace(\@instavalB)\newline\fi
+      \ifx\@avalC\relax\else \@avalC \xspace(\@instavalC)\newline\fi
+      \ifx\@avalD\relax\else \@avalD \xspace(\@instavalD)\newline\fi
+      \ifx\@avalE\relax\else \@avalE \xspace(\@instavalE)\newline\fi
+      \ifx\@avalF\relax\else \@avalF \xspace(\@instavalF)\newline\fi
+    \vskip 30mm
+    \hfill\begin{minipage}[t]{\textwidth}
+      \supresshyphen
+      A ata da defesa, com as respectivas assinaturas dos membros da Comiss\~ao Julgadora, encontra-se no SIGA (Sistema de Fluxo de Dissertação/Tese) e na Secretaria de P\'os Gradua\c{c}\~ao da Faculdade de Engenharia El\'etrica e de Computa\c{c}\~ao.
     \end{minipage}
     \vfill
   \else
